@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show</title>
+  <style>
+    table,th,tr,td {
+      border : 1px solid black
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <h1>User Details</h1>
+    <form action="/add">
+      <button style="background-color: rgb(51, 204, 5);" >Join Us Today</button>
+    </form>
+    <br>
+    <table>
+      <caption><b>User Table</b></caption>
+      <tr>
+        <th>S.No</th>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <% let i = 0; %> <!-- Declare variable outside of loop -->
+      <% for (user of result) { %>
+        <tr>
+          <td><%= ++i %></td> <!-- Increment within template -->
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><form action="/user/<%= user.id %>/edit">
+            <button style="background-color: lightskyblue;">Edit Detail</button>
+          </form></td>
+          <td>
+            <form action="/user/<%= user.id %>/delete">
+              <button style="background-color: red;">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+</center>
+</body>
+</html>
